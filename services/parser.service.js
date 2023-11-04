@@ -7,10 +7,10 @@ class parserService{
     async callback(first_name, second_name, email, street, apartment_number, city, phone_number, post_code){
 
             const browser = await puppeteer.launch({
-                headless: false,
                 slowMo: 100,
                 devtools: true,
-                executablePath: executablePath()
+                executablePath: executablePath(),
+                headless: 'new'
             })//init browser
             const page = await browser.newPage()
             await page.setViewport({width: 1400, height: 900})
