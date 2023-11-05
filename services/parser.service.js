@@ -11,7 +11,7 @@ class parserService{
                 devtools: true,
                 executablePath: executablePath(),
                 args: ['--no-sandbox', '--disable-setuid-sandbox'],
-                headless: true
+                headless: 'new'
             })//init browser
             const page = await browser.newPage()
             await page.setViewport({width: 1400, height: 900})
