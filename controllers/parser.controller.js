@@ -4,7 +4,7 @@ class parserController{
     async callback(req, res, next){
         try{
             let first_name, second_name, email, street, apartment_number, city, phone_number, post_code
-
+            console.log(req.body)
             first_name = req.body['form_fileds[name]']
             second_name = req.body['form_fields[field_7e04b27]']
             email = req.body['form_fields[email]']
@@ -13,7 +13,6 @@ class parserController{
             city = req.body['form_fields[field_89dc639]']
             phone_number = req.body['form_fields[field_3dceee2]']
             phone_number = phone_number.split(' ')[1]
-            console.log({phone_number})
             phone_number = phone_number.split('-')[0] + phone_number.split('-')[1] + phone_number.split('-')[2]
             post_code = req.body['form_fields[field_4ec2f55]']
 
