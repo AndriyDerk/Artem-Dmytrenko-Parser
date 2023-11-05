@@ -16,7 +16,7 @@ class parserService{
             await page.setViewport({width: 1400, height: 900})
 
         try {
-
+            console.log("start filling")
             // PAGE 1 FILL DATA
 
             let Link = "https://www.amway.pl/login/aboregister1"
