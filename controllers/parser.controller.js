@@ -4,7 +4,7 @@ class parserController{
     async callback(req, res, next){
         try{
             const {first_name, second_name, email, street, apartment_number, city, phone_number, post_code} = req.body
-            console.log(req.body, {first_name, second_name, email, street, apartment_number, city, phone_number, post_code})
+            console.log(req, req.body, {first_name, second_name, email, street, apartment_number, city, phone_number, post_code})
 
             if(first_name, second_name, email, street, apartment_number, city, phone_number, post_code){
                 console.log("OK")
