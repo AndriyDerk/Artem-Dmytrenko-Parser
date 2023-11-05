@@ -12,6 +12,9 @@ class parserController{
             apartment_number = req.body['form_fields[field_6fd6def]']
             city = req.body['form_fields[field_89dc639]']
             phone_number = req.body['form_fields[field_3dceee2]']
+            phone_number = phone_number.split(' ')[1]
+            console.log({phone_number})
+            phone_number = phone_number.split('-')[0] + phone_number.split('-')[1] + phone_number.split('-')[2]
             post_code = req.body['form_fields[field_4ec2f55]']
 
 
