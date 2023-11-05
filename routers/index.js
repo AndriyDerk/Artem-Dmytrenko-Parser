@@ -6,6 +6,6 @@ const parserRouter = require('./parser.router')
 router.use('/parser', parserRouter)
 router.get('/', (req, res) => {
     console.log("Ok")
-    res.send('Artem-Dmytrenko-Parser parser')
+    res.send('Artem-Dmytrenko-Parser')
 })
 module.exports = router
