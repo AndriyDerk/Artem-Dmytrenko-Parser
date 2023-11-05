@@ -17,7 +17,7 @@ class parserService{
             await page.setViewport({width: 1400, height: 900})
 
         try {
-            console.log("start filling")
+            console.log("PAGE 1 FILL DATA")
             // PAGE 1 FILL DATA
 
             let Link = "https://www.amway.pl/login/aboregister1"
@@ -70,6 +70,7 @@ class parserService{
 
 
             // PAGE 2 FILL DATA
+            console.log("PAGE 2 FILL DATA")
 
             const address = street + ' ' + apartment_number
             await page.waitForSelector('[name*=\'addressLine\']')
@@ -103,6 +104,7 @@ class parserService{
                 }
             })
             // PAGE 3 FILL DATA
+            console.log("PAGE 3 FILL DATA")
 
             await page.waitForSelector('[name="phone"]')
             await page.$eval('[name="phone"]', (element, phone_number) => {
@@ -114,6 +116,7 @@ class parserService{
             await page.click('[class="btn-amway__spinner"]')
 
             // PAGE 4 FILL DATA
+            console.log("PAGE 4 FILL DATA")
 
             await page.waitForSelector('[placeholder="Wpisz numer PA"]')
             await page.$eval('[placeholder="Wpisz numer PA"]', (element) => {
@@ -123,6 +126,7 @@ class parserService{
 
             await page.waitForTimeout(10000)
             await page.click('[type="submit"]')
+            console.log("PAGE 5 FILL DATA")
 
             await page.waitForTimeout(10000)
             await page.click('[type="submit"]')
@@ -130,6 +134,7 @@ class parserService{
             await page.click('[type="submit"]')
 
             await page.waitForTimeout(30000)
+            console.log("END")
             await browser.close()
 
             return true
