@@ -5,7 +5,7 @@ class userInfoController{
         try{
             const users_info = await userInfoService.statistic()
 
-            return res.json(users_info)
+            return res.send(users_info)
         }catch (e) {
             next(e)
         }
