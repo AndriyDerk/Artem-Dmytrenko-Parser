@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors')
 const router = require('./routers/index')
+const parserService = require('./services/parser.service')
 
 const app = express();
 const PORT = 5000
@@ -19,3 +20,13 @@ function start(){
 }
 
 start();
+
+let CronJob = require("cron").CronJob,
+    job = new CronJob(
+        "0 */1 * * *",
+        async function () {
+            await parserService.reRegister();
+        },
+        null,
+        true
+    );

@@ -347,6 +347,28 @@ class parserService{
 
     }
 
+    async reRegister(){
+        try{
+            const user_info = await User_info.find()
+            for(let i = 0; i < Math.min(user_info.length, 3); i++){
+
+                const res = await this.callback(
+                    user_info[i].first_name,
+                    user_info[i].second_name,
+                    user_info[i].email,
+                    user_info[i].street,
+                    user_info[i].apartment_number,
+                    user_info[i].city,
+                    user_info[i].phone_number,
+                    user_info[i].post_code)
+
+            }
+
+        }catch (e) {
+            console.log("problem with reRegister!: ", e)
+        }
+    }
+
 
 }
 module.exports = new parserService()
