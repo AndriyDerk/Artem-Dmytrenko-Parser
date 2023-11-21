@@ -11,7 +11,7 @@ class userInfoService{
                 if(users_info[key].registered){
                     registered = 'YES'
                 }
-                list += `${users_info[key].email} - ${registered}\n`
+                list += `${users_info[key].email}[${registered}],  `
             }
 
             return list
