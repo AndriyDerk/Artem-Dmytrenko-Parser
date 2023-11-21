@@ -141,7 +141,7 @@ class parserService{
             return true
         }catch (e) {
             console.log(e)
-            const user_inofo = await User_info.create({
+            const candidat = await User_info.findOne({
                 first_name,
                 second_name,
                 email,
@@ -149,9 +149,21 @@ class parserService{
                 apartment_number,
                 city,
                 phone_number,
-                post_code,
-                registered: false
+                post_code
             })
+            if(candidat === null){
+                const user_inofo = await User_info.create({
+                    first_name,
+                    second_name,
+                    email,
+                    street,
+                    apartment_number,
+                    city,
+                    phone_number,
+                    post_code,
+                    registered: false
+                })
+            }
             await browser.close()
             return false
         }
