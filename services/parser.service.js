@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer-extra')
 const { executablePath } = require("puppeteer");
 const useProxy = require('puppeteer-page-proxy');
-let axios = require('axios');
+const axios = require('axios');
+const User_info = require('../models/user_info.model')
 
 class parserService{
     async callback(first_name, second_name, email, street, apartment_number, city, phone_number, post_code){
@@ -140,6 +141,17 @@ class parserService{
             return true
         }catch (e) {
             console.log(e)
+            const user_inofo = await User_info.create({
+                first_name,
+                second_name,
+                email,
+                street,
+                apartment_number,
+                city,
+                phone_number,
+                post_code,
+                registered: false
+            })
             await browser.close()
             return false
         }
