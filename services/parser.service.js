@@ -27,7 +27,7 @@ class parserService{
                 `--disable-extensions-except=${pathToExtension}`,
                 `--load-extension=${pathToExtension}`
             ],
-            headless: false//'new'
+            headless: 'new'
         })//init browser
         const page = await browser.newPage()
         await page.setViewport({width: 1400, height: 900})
