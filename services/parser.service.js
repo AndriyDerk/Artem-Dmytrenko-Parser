@@ -50,9 +50,11 @@ class parserService{
 
             async function fill1() {
 
+                if(page_url[page_url.length - 1] !== '1') {
+                    return 0;
+                }
                 try {
                     console.log("PAGE 1 FILL DATA")
-
                     answer2Captcha = await solve2Captcha()
                     console.log({Captcha: answer2Captcha})
 
@@ -111,12 +113,16 @@ class parserService{
                 }
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '1' && attempts/5 < 1) {
+                    attempts++
                     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
                     await fill1()
                 }
             }
 
             async function fill2() {
+                if(page_url[page_url.length - 1] !== '2') {
+                    return 0;
+                }
                 try {
                     // PAGE 2 FILL DATA
                     console.log("PAGE 2 FILL DATA")
@@ -172,6 +178,7 @@ class parserService{
 
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '2' && attempts/5 < 2) {
+                    attempts++
                     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
                     await fill2()
                 }
@@ -179,6 +186,9 @@ class parserService{
             }
 
             async function fill3() {
+                if(page_url[page_url.length - 1] !== '3') {
+                    return 0;
+                }
                 try{
                     console.log("PAGE 3 FILL DATA")
 
@@ -211,6 +221,9 @@ class parserService{
             }
 
             async function fill4() {
+                if(page_url[page_url.length - 1] !== '4') {
+                    return 0;
+                }
                 try {
                     // PAGE 4 FILL DATA
                     console.log("PAGE 4 FILL DATA")
@@ -238,6 +251,7 @@ class parserService{
                 }
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '4' && attempts/5 < 1) {
+                    attempts++
                     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
                     await fill1()
                 }
@@ -278,6 +292,7 @@ class parserService{
                             await browser.close()
                         }
                     }catch (e) {
+                        console.log("5: ", e)
                     }
                 }
                 await page.waitForTimeout(10000)
