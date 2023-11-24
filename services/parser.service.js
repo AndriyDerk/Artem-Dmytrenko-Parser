@@ -4,6 +4,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const useProxy = require('puppeteer-page-proxy');
 const axios = require('axios');
 const User_info = require('../models/user_info.model')
+const path = require('path')
 
 class parserService{
 
@@ -104,7 +105,12 @@ class parserService{
                 for(let i = 0; i < 5; i++) {
                     page_url = page.url().toString()
                     if(page_url[page_url.length - 1] !== '1') {
-                        break
+                        await page.screenshot({
+      "type": "png", // can also be "jpeg" or "webp" (recommended)
+      "path": path.join('../src',  `${first_name + '-' + attempts}`),  // where to save it
+      "fullPage": true,  // will scroll down to capture everything if true
+    })
+break
                     }
                     await page.waitForTimeout(10000)
                     await page.click('[type="submit"]')
@@ -154,7 +160,12 @@ console.log({attempts})
                 for(let i = 0; i < 5; i++) {
                     page_url = page.url().toString()
                     if(page_url[page_url.length - 1] !== '2') {
-                        break
+                        await page.screenshot({
+      "type": "png", // can also be "jpeg" or "webp" (recommended)
+       "path": path.join('../src',  `${first_name + '-' + attempts}`),  // where to save it
+      "fullPage": true,  // will scroll down to capture everything if true
+    })
+break
                     }
                     await page.waitForTimeout(10000)
                     await page.click('[type="submit"]')
@@ -170,7 +181,12 @@ console.log({attempts})
                             const val = item.innerText
                             if (val === ' Zapisz i kontynuuj' || val === 'Zapisz i kontynuuj') {
                                 await item.click()
-                                break;
+                                await page.screenshot({
+      "type": "png", // can also be "jpeg" or "webp" (recommended)
+       "path": path.join('../src',  `${first_name + '-' + attempts}`),  // where to save it
+      "fullPage": true,  // will scroll down to capture everything if true
+    })
+break;
                             }
                         }
                     })
@@ -207,7 +223,12 @@ console.log({attempts})
                 for(let i = 0; i < 5; i++) {
                     page_url = page.url().toString()
                     if(page_url[page_url.length - 1] !== '3') {
-                        break
+                        await page.screenshot({
+      "type": "png", // can also be "jpeg" or "webp" (recommended)
+       "path": path.join('../src',  `${first_name + '-' + attempts}`),  // where to save it
+      "fullPage": true,  // will scroll down to capture everything if true
+    })
+break
                     }
                     await page.waitForTimeout(10000)
                     await page.click('[class="btn-amway__spinner"]')
@@ -242,9 +263,15 @@ console.log({attempts})
                 }
 
                 for(let i = 0; i < 5; i++) {
+
                     page_url = page.url().toString()
                     if(page_url[page_url.length - 1] !== '4') {
-                        break
+                        await page.screenshot({
+      "type": "png", // can also be "jpeg" or "webp" (recommended)
+       "path": path.join('../src',  `${first_name + '-' + attempts}`),  // where to save it
+      "fullPage": true,  // will scroll down to capture everything if true
+    })
+break
                     }
                     await page.waitForTimeout(10000)
                     await page.click('[type="submit"]')
@@ -254,13 +281,14 @@ console.log({attempts})
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '4' && attempts/5 < 1) {
                     attempts++
-console.log({attempts})
+                    console.log({attempts})
                     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
                     await fill1()
                 }
 
             }
             console.log("PAGE 5 FILL DATA")
+
             for(let i = 0; i < 5; i++) {
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '5') {
@@ -297,7 +325,7 @@ console.log({attempts})
                     }catch (e) {
                         console.log("5: ", e)
                     }
-                }
+                }   
                 await page.waitForTimeout(10000)
                 await page.click('[type="submit"]')
                 answer2Captcha = await solve2Captcha()
