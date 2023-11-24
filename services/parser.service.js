@@ -114,6 +114,7 @@ class parserService{
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '1' && attempts/5 < 1) {
                     attempts++
+console.log({attempts})
                     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
                     await fill1()
                 }
@@ -179,6 +180,7 @@ class parserService{
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '2' && attempts/5 < 2) {
                     attempts++
+console.log({attempts})
                     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
                     await fill2()
                 }
@@ -252,6 +254,7 @@ class parserService{
                 page_url = page.url().toString()
                 if(page_url[page_url.length - 1] === '4' && attempts/5 < 1) {
                     attempts++
+console.log({attempts})
                     await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
                     await fill1()
                 }
